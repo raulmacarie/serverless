@@ -1,0 +1,19 @@
+# package directories
+node_modules
+
+# Serverless directories
+.serverless
+
+#build
+.webpack
+.build
+
+# Tests
+coverage
+
+# Environment Files
+.env*
+
+#.idea
+.idea
+*.iml

@@ -1,0 +1,49 @@
+service: serverless-typescript-starter
+useDotenv: true
+
+package:
+  individually: true
+
+custom:
+  bundle:
+    disableForkTsChecker: true
+  prune:
+    automatic: true
+    number: 3
+
+plugins:
+  - serverless-bundle
+  - serverless-dotenv-plugin
+  - serverless-prune-plugin
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: dev
+  region: us-east-1
+  apiGateway:
+    shouldStartNameWithService: true
+  lambdaHashingVersion: 20201221
+  environment:
+    SAMPLE_ENV_VAR: ${env:SAMPLE_ENV_VAR}
+
+functions:
+  hello:
+    handler: src/simple.hello
+    events:
+      - http:
+          path: hello
+          method: get
+  express:
+    handler: src/express.app
+    events:
+      - http:
+          path: /express/
+          method: any
+          cors: true
+      - http:
+          path: /express/{any+}
+          method: any
+          cors: true
+
