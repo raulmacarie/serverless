@@ -13,8 +13,6 @@ server.get('*', async (_: Request, res: Response) => {
 
 
 
-
-
     .json({ allGood: true });
 });
 
