@@ -9,11 +9,7 @@ server.get('/healthz', (_: Request, res: Response) => {
 
 // handle nextjs routing
 server.get('*', async (_: Request, res: Response) => {
-  res.status(200)
-
-
-
-    .json({ allGood: true });
+  res.status(200).json({ allGood: true });
 });
 
 const handler = serverless(server);
